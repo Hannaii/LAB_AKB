@@ -1,19 +1,19 @@
-import { MaterialIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import { MaterialIcons } from '@expo/vector-icons';
 
+// Sumber foto grid: id Picsum berbeda semua
 const initialGridImages = [
-  { id: 1, mainSrc: 'https://picsum.photos/seed/picsum/536/354', altSrc: 'https://picsum.photos/id/1084/536/354?grayscale', isFlipped: false, scale: 1 },
-  { id: 2, mainSrc: 'https://fastly.picsum.photos/id/21/3008/2008.jpg?hmac=T8DSVNvP-QldCew7WD4jj_S3mWwxZPqdF0CNPksSko4', altSrc: 'https://picsum.photos/536/354', isFlipped: false, scale: 1 },
-  { id: 3, mainSrc: 'https://picsum.photos/id/29/367/267', altSrc: 'https://picsum.photos/id/27/367/267', isFlipped: false, scale: 1 },
-  { id: 4, mainSrc: 'https://picsum.photos/536/354', altSrc: 'https://picsum.photos/id/1084/536/354?grayscale', isFlipped: false, scale: 1 },
-  { id: 5, mainSrc: 'https://picsum.photos/id/870/536/354?grayscale&blur=2', altSrc: 'https://picsum.photos/id/1060/536/354?blur=2', isFlipped: false, scale: 1 },
-  { id: 6, mainSrc: 'https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g', altSrc: 'https://fastly.picsum.photos/id/17/2500/1667.jpg?hmac=HD-JrnNUZjFiP2UZQvWcKrgLoC_pc_ouUSWv8kHsJJY', isFlipped: false, scale: 1 },
-  { id: 7, mainSrc: 'https://fastly.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I', altSrc: 'https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o', isFlipped: false, scale: 1 },
-  { id: 8, mainSrc: 'https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g', altSrc: 'https://fastly.picsum.photos/id/25/5000/3333.jpg?hmac=yCz9LeSs-i72Ru0YvvpsoECnCTxZjzGde805gWrAHkM', isFlipped: false, scale: 1 },
-  { id: 9, mainSrc: 'https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA', altSrc: 'https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU', isFlipped: false, scale: 1 },
+  { id: 1, mainSrc: 'https://picsum.photos/id/201/200', altSrc: 'https://picsum.photos/id/202/200', isFlipped: false, scale: 1 },
+  { id: 2, mainSrc: 'https://picsum.photos/id/203/200', altSrc: 'https://picsum.photos/id/204/200', isFlipped: false, scale: 1 },
+  { id: 3, mainSrc: 'https://picsum.photos/id/205/200', altSrc: 'https://picsum.photos/id/206/200', isFlipped: false, scale: 1 },
+  { id: 4, mainSrc: 'https://picsum.photos/id/207/200', altSrc: 'https://picsum.photos/id/208/200', isFlipped: false, scale: 1 },
+  { id: 5, mainSrc: 'https://picsum.photos/id/209/200', altSrc: 'https://picsum.photos/id/210/200', isFlipped: false, scale: 1 },
+  { id: 6, mainSrc: 'https://picsum.photos/id/211/200', altSrc: 'https://picsum.photos/id/212/200', isFlipped: false, scale: 1 },
+  { id: 7, mainSrc: 'https://picsum.photos/id/213/200', altSrc: 'https://picsum.photos/id/214/200', isFlipped: false, scale: 1 },
+  { id: 8, mainSrc: 'https://picsum.photos/id/215/200', altSrc: 'https://picsum.photos/id/216/200', isFlipped: false, scale: 1 },
+  { id: 9, mainSrc: 'https://picsum.photos/id/217/200', altSrc: 'https://picsum.photos/id/218/200', isFlipped: false, scale: 1 },
 ];
-
 
 export default function Index() {
   const [gridImages, setGridImages] = useState(initialGridImages);
@@ -23,12 +23,11 @@ export default function Index() {
     setGridImages(currentImages =>
       currentImages.map(image => {
         if (image.id === imageId) {
-          // Hitung skala baru dengan batasan maksimal 2x
           const newScale = Math.min(image.scale * 1.2, 2);
           return {
             ...image,
-            isFlipped: !image.isFlipped, // Toggle gambar utama/alternatif
-            scale: newScale, // Terapkan scaling
+            isFlipped: !image.isFlipped,
+            scale: newScale,
           };
         }
         return image;
@@ -38,25 +37,7 @@ export default function Index() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Bagian komponen lama tetap sama */}
-      <View style={styles.rectangle}>
-        <Image
-          source={{ uri: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/250px-Real_Madrid_CF.svg.png" }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.triangle} />
-      <View style={styles.pill}>
-        <MaterialIcons name="person" size={24} color="white" />
-        <Text style={styles.pillText}>105841110922</Text>
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.redText}>Hanna Maryam</Text>
-        <Text style={styles.whiteText}>105841110922</Text>
-      </View>
-
-      {/* Grid gambar 3x3 */}
+      {/* Grid gambar 3x3 dipindahkan ke atas */}
       <View style={styles.gridContainer}>
         {gridImages.map(image => (
           <TouchableOpacity
@@ -70,7 +51,7 @@ export default function Index() {
                 styles.gridImage,
                 { 
                   transform: [{ scale: image.scale }],
-                  borderRadius: 8, // Untuk konsistensi dengan sel
+                  borderRadius: 8,
                 }
               ]}
               resizeMode="cover"
@@ -78,6 +59,24 @@ export default function Index() {
           </TouchableOpacity>
         ))}
       </View>
+      {/* Komponen lain di bawah grid */}
+      <View style={styles.rectangle}>
+        <Image
+          source={{ uri: "https://media1.tenor.com/m/R8csty7sKYMAAAAd/tung-tung-sahur.gif" }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
+      <View style={styles.triangle} />
+      <View style={styles.pill}>
+        <MaterialIcons name="person" size={24} color="white" />
+        <Text style={styles.pillText}>105841110922</Text>
+      </View>
+      <View style={styles.textContainer}>
+        <Text style={styles.redText}>Hanna Maryam</Text>
+        <Text style={styles.whiteText}>105841110922</Text>
+      </View>
+      <View style={styles.blueCircle}></View>
     </ScrollView>
   );
 }
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#dd549bff",
+    backgroundColor: "#d97a93ff",
     borderRadius: 50,
     paddingHorizontal: 24,
     paddingVertical: 12,
@@ -153,19 +152,27 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  blueCircle: {
+    width: 50,
+    height: 50,
+    backgroundColor: "blue",
+    borderRadius: 100,
+    marginTop: 10
+  },
   gridContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     width: '100%',
-    maxWidth: 330, // Maksimal 3 kolom (100*3 + margin)
+    maxWidth: 330,
     marginTop: 20,
+    marginBottom: 30,
   },
   gridCell: {
     width: 100,
     height: 100,
     margin: 5,
-    backgroundColor: '#543a23ff',
+    backgroundColor: '#e0e0e0',
     borderRadius: 8,
     overflow: 'hidden',
   },
