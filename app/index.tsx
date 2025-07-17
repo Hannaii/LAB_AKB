@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
-// Sumber foto grid: id Picsum berbeda semua
+// Total 9 gambar utama dan 9 alternatif (sesuai tugas)
 const initialGridImages = [
   { id: 1, mainSrc: 'https://picsum.photos/id/201/200', altSrc: 'https://picsum.photos/id/202/200', isFlipped: false, scale: 1 },
   { id: 2, mainSrc: 'https://picsum.photos/id/203/200', altSrc: 'https://picsum.photos/id/204/200', isFlipped: false, scale: 1 },
@@ -18,7 +18,6 @@ const initialGridImages = [
 export default function Index() {
   const [gridImages, setGridImages] = useState(initialGridImages);
 
-  // Fungsi untuk menangani klik gambar
   const handleImagePress = (imageId: number) => {
     setGridImages(currentImages =>
       currentImages.map(image => {
@@ -37,29 +36,32 @@ export default function Index() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Grid gambar 3x3 dipindahkan ke atas */}
-      <View style={styles.gridContainer}>
-        {gridImages.map(image => (
-          <TouchableOpacity
-            key={image.id}
-            onPress={() => handleImagePress(image.id)}
-            style={styles.gridCell}
-          >
-            <Image
-              source={{ uri: image.isFlipped ? image.altSrc : image.mainSrc }}
-              style={[
-                styles.gridImage,
-                { 
-                  transform: [{ scale: image.scale }],
-                  borderRadius: 8,
-                }
-              ]}
-              resizeMode="cover"
-            />
-          </TouchableOpacity>
+      
+      {/* Grid 3x3 Eksplisit */}
+      <View style={styles.gridWrapper}>
+        {[0, 1, 2].map(row => (
+          <View key={row} style={styles.gridRow}>
+            {gridImages.slice(row * 3, row * 3 + 3).map(image => (
+              <TouchableOpacity
+                key={image.id}
+                onPress={() => handleImagePress(image.id)}
+                style={styles.gridCell}
+              >
+                <Image
+                  source={{ uri: image.isFlipped ? image.altSrc : image.mainSrc }}
+                  style={[
+                    styles.gridImage,
+                    { transform: [{ scale: image.scale }] }
+                  ]}
+                  resizeMode="cover"
+                />
+              </TouchableOpacity>
+            ))}
+          </View>
         ))}
       </View>
-      {/* Komponen lain di bawah grid */}
+
+      {/* Komponen Lain */}
       <View style={styles.rectangle}>
         <Image
           source={{ uri: "https://media1.tenor.com/m/R8csty7sKYMAAAAd/tung-tung-sahur.gif" }}
@@ -88,6 +90,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     paddingVertical: 60,
+  },
+  gridWrapper: {
+    marginBottom: 30,
+  },
+  gridRow: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 10,
+  },
+  gridCell: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#e0e0e0',
+    marginHorizontal: 5,
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+  gridImage: {
+    width: '100%',
+    height: '100%',
   },
   rectangle: {
     width: 220,
@@ -159,25 +181,4 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginTop: 10
   },
-  gridContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    width: '100%',
-    maxWidth: 330,
-    marginTop: 20,
-    marginBottom: 30,
-  },
-  gridCell: {
-    width: 100,
-    height: 100,
-    margin: 5,
-    backgroundColor: '#e0e0e0',
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  gridImage: {
-    width: '100%',
-    height: '100%',
-  }
 });
