@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const initialGridImages = [
-  { id: 1, mainSrc: 'https://picsum.photos/id/10/200', altSrc: 'https://picsum.photos/id/11/200', isFlipped: false, scale: 1 },
-  { id: 2, mainSrc: 'https://picsum.photos/id/12/200', altSrc: 'https://picsum.photos/id/13/200', isFlipped: false, scale: 1 },
-  { id: 3, mainSrc: 'https://picsum.photos/id/14/200', altSrc: 'https://picsum.photos/id/15/200', isFlipped: false, scale: 1 },
-  { id: 4, mainSrc: 'https://picsum.photos/id/16/200', altSrc: 'https://picsum.photos/id/17/200', isFlipped: false, scale: 1 },
-  { id: 5, mainSrc: 'https://picsum.photos/id/18/200', altSrc: 'https://picsum.photos/id/19/200', isFlipped: false, scale: 1 },
-  { id: 6, mainSrc: 'https://picsum.photos/id/20/200', altSrc: 'https://picsum.photos/id/21/200', isFlipped: false, scale: 1 },
-  { id: 7, mainSrc: 'https://picsum.photos/id/22/200', altSrc: 'https://picsum.photos/id/23/200', isFlipped: false, scale: 1 },
-  { id: 8, mainSrc: 'https://picsum.photos/id/24/200', altSrc: 'https://picsum.photos/id/25/200', isFlipped: false, scale: 1 },
-  { id: 9, mainSrc: 'https://picsum.photos/id/26/200', altSrc: 'https://picsum.photos/id/27/200', isFlipped: false, scale: 1 },
+  { id: 1, mainSrc: 'https://picsum.photos/seed/picsum/536/354', altSrc: 'https://picsum.photos/id/1084/536/354?grayscale', isFlipped: false, scale: 1 },
+  { id: 2, mainSrc: 'https://fastly.picsum.photos/id/21/3008/2008.jpg?hmac=T8DSVNvP-QldCew7WD4jj_S3mWwxZPqdF0CNPksSko4', altSrc: 'https://picsum.photos/536/354', isFlipped: false, scale: 1 },
+  { id: 3, mainSrc: 'https://picsum.photos/id/29/367/267', altSrc: 'https://picsum.photos/id/27/367/267', isFlipped: false, scale: 1 },
+  { id: 4, mainSrc: 'https://picsum.photos/536/354', altSrc: 'https://picsum.photos/id/1084/536/354?grayscale', isFlipped: false, scale: 1 },
+  { id: 5, mainSrc: 'https://picsum.photos/id/870/536/354?grayscale&blur=2', altSrc: 'https://picsum.photos/id/1060/536/354?blur=2', isFlipped: false, scale: 1 },
+  { id: 6, mainSrc: 'https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g', altSrc: 'https://fastly.picsum.photos/id/17/2500/1667.jpg?hmac=HD-JrnNUZjFiP2UZQvWcKrgLoC_pc_ouUSWv8kHsJJY', isFlipped: false, scale: 1 },
+  { id: 7, mainSrc: 'https://fastly.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I', altSrc: 'https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o', isFlipped: false, scale: 1 },
+  { id: 8, mainSrc: 'https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g', altSrc: 'https://fastly.picsum.photos/id/25/5000/3333.jpg?hmac=yCz9LeSs-i72Ru0YvvpsoECnCTxZjzGde805gWrAHkM', isFlipped: false, scale: 1 },
+  { id: 9, mainSrc: 'https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA', altSrc: 'https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU', isFlipped: false, scale: 1 },
 ];
+
 
 export default function Index() {
   const [gridImages, setGridImages] = useState(initialGridImages);
@@ -40,7 +41,7 @@ export default function Index() {
       {/* Bagian komponen lama tetap sama */}
       <View style={styles.rectangle}>
         <Image
-          source={{ uri: "https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" }}
+          source={{ uri: "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/250px-Real_Madrid_CF.svg.png" }}
           style={styles.image}
           resizeMode="cover"
         />
@@ -48,13 +49,12 @@ export default function Index() {
       <View style={styles.triangle} />
       <View style={styles.pill}>
         <MaterialIcons name="person" size={24} color="white" />
-        <Text style={styles.pillText}>105841111722</Text>
+        <Text style={styles.pillText}>105841110922</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.redText}>Hardita</Text>
-        <Text style={styles.whiteText}>105841111722</Text>
+        <Text style={styles.redText}>Hanna Maryam</Text>
+        <Text style={styles.whiteText}>105841110922</Text>
       </View>
-      <View style={styles.blueCircle}></View>
 
       {/* Grid gambar 3x3 */}
       <View style={styles.gridContainer}>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#4a90e2",
+    backgroundColor: "#dd549bff",
     borderRadius: 50,
     paddingHorizontal: 24,
     paddingVertical: 12,
@@ -153,13 +153,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  blueCircle: {
-    width: 50,
-    height: 50,
-    backgroundColor: "blue",
-    borderRadius: 100,
-    marginTop: 10
-  },
   gridContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -172,7 +165,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     margin: 5,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#543a23ff',
     borderRadius: 8,
     overflow: 'hidden',
   },
