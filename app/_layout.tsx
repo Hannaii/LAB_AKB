@@ -1,25 +1,33 @@
+import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
-import * as splashscreen from "expo-splash-screen";
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-splashscreen.preventAutoHideAsync(); // melarang untuk menutup touchscreennya secara otomatis
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    "interna-regular": 
-    require("../assets/fonts/interna-regular.ttf"), // Memuat font kustom
+  const [fontsLoaded] = useFonts({
+    // 🧷 5 Font Statis
+    "Combo": require("../assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf"),
+    "Estonia": require("../assets/fonts/interna-regular.ttf"),
+    "IngridDarling": require("../assets/fonts/Interna-VariableFont_opsz,wght.ttf"),
+    "JacquesFrancoisShadow": require("../assets/fonts/SpaceMono-Regular.ttf"),
+    "SyneTactile": require("../assets/fonts/Roboto-VariableFont_wdth,wght.ttf"),
+
+
+    // 🧷 5 Variable Fonts
+    "Bitcount": require("../assets/fonts/Poppins-BlackItalic.ttf"),
+    "Manrope": require("../assets/fonts/Poppins-Bold.ttf"),
+    "Quicksand": require("../assets/fonts/Poppins-BoldItalic.ttf"),
+    "SmoochSans": require("../assets/fonts/Poppins-LightItalic.ttf"),
+    "JosefinSlab": require("../assets/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf"),
   });
 
   useEffect(() => {
-    if (loaded && error == null) {
-      SplashScreen.hideAsync(); // Mmenyembunyikan splash screen 
-    } 
-  }, [loaded,error]);
+    if (fontsLoaded) SplashScreen.hideAsync();
+  }, [fontsLoaded]);
 
-  if (!loaded && error) {
-    return null; // Menampilkan null jika font belum dimuat
-  }
+  if (!fontsLoaded) return null;
+
   return <Stack />;
-
 }
